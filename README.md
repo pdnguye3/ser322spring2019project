@@ -5,16 +5,19 @@ ASU - Software Engineering SER 322 - Databases
 
 Final Project
 
-## Project Title:
+## Project Info
+### Project Title:
 The Wonderful World of Gaming
 
-## Application Domain:
+### Application Domain:
 Our domain entails Triple A and Indie video games.
 
-## Database application description:
+### Database application description:
 This database application contains information about multiple different games, including their genres and playstyles, while also allowing insight into other types of games that could be of potential interest
 
+---
 
+## Running the application
 To tun the application, make sure to have Ant installed. See the official [Apache Ant](https://ant.apache.org/) website for more info.
 
 To compile the code, run `ant compile` from the root directory of the project folder
