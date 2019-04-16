@@ -3,15 +3,30 @@
   <property file="build.properties" />
 
   <path id="classpath">
-		<fileset dir="./">
-			<include name="${srclib}/*.jar" />
-		</fileset>
+    <fileset dir="./">
+      <include name="${srclib}/*.jar" />
+    </fileset>
   </path>
 
   <target name="compile">
     <mkdir dir="${destdir}/classes"/>
     <javac classpathref="classpath" srcdir="src" destdir="${destdir}/classes/" />
-  	<copy file="${properties}/rdbm.properties" todir="${destdir}/classes/"/>
+    <copy file="${properties}/rdbm.properties" todir="${destdir}/classes/"/>
+  </target>
+
+  <target name="jar" depends="compile" >
+    <echo message="Creating a jar file" />
+    <mkdir dir="${destdir}/jar"/>
+    <jar destfile="${destdir}/jar/${applicationName}.jar" basedir="${destdir}/classes">
+      <manifest>
+        <attribute name="Main-Class" value="${applicationName}" />
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <echo message="Running the application: ${applicationName}" />
+    <java jar="${destdir}/jar/${applicationName}.jar" fork="true" />
   </target>
 
   <target name="clean">
